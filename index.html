@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories Store | تسوق القطع الأثرية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+    <!-- Particle canvas for effects -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Floating decorative blobs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="bg-orb orb-4"></div>
+
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <div class="brand">
+                <span class="brand-icon">🏺</span>
+                <h1>Memories <span class="brand-accent">Store</span></h1>
+            </div>
+
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="wishlist-toggle" id="wishlistToggle" aria-label="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-toggle" id="cartToggle" aria-label="Open shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <p class="tagline">Pieces that tell stories.. choose what touches your heart</p>
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search for a product..." autocomplete="off">
+                <button class="search-clear" id="searchClear"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section scroll-reveal">
+            <div class="hero-content">
+                <h2 class="hero-title">Discover Treasures of the Past</h2>
+                <p class="hero-subtitle">A rare collection of antiques and classic collectibles</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Rare Products</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Authentic</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24h</span>
+                        <span class="stat-label">Delivery</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="section-heading scroll-reveal">
+                <h2>Available Products</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="controls-bar">
+                <div class="filter-bar" id="filterBar">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="cameras">Cameras</button>
+                    <button class="filter-btn" data-filter="watches">Watches</button>
+                    <button class="filter-btn" data-filter="audio">Audio</button>
+                    <button class="filter-btn" data-filter="office">Office</button>
+                </div>
+                <div class="sort-bar">
+                    <select id="sortSelect">
+                        <option value="default">Default Sort</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name">Name</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="products-container" class="products-grid">
+                <!-- Skeleton loading -->
+                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No Results Found</h3>
+                <p>Try a different search or filter</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer scroll-reveal">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-icon">🏺</span>
+                <h3>Memories <span class="brand-accent">Store</span></h3>
+                <p>We preserve history in every piece</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Memories Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content checkout-modal">
+            <button class="modal-close" id="checkoutClose"><i class="fas fa-times"></i></button>
+            <div class="checkout-header">
+                <h2><i class="fas fa-credit-card"></i> Complete Purchase</h2>
+            </div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name الكامل</label>
+                        <input type="text" id="fullName" placeholder="محمد أحمد" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="01xxxxxxxx" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Governorate <span class="required">*</span></label>
+                        <select id="city" required>
+                            <option value="">اختر Governorate</option>
+                            <option value="القاهرة">القاهرة</option>
+                            <option value="الجيزة">الجيزة</option>
+                            <option value="الإسكندرية">الإسكندرية</option>
+                            <option value="الدقهلية">الدقهلية</option>
+                            <option value="الشرقية">الشرقية</option>
+                            <option value="الغربية">الغربية</option>
+                            <option value="المنوفية">المنوفية</option>
+                            <option value="القليوبية">القليوبية</option>
+                            <option value="كفر الشيخ">كفر الشيخ</option>
+                            <option value="البحيرة">البحيرة</option>
+                            <option value="دمياط">دمياط</option>
+                            <option value="بورسعيد">بورسعيد</option>
+                            <option value="الإسماعيلية">الإسماعيلية</option>
+                            <option value="السويس">السويس</option>
+                            <option value="شمال سيناء">شمال سيناء</option>
+                            <option value="جنوب سيناء">جنوب سيناء</option>
+                            <option value="البحر الأحمر">البحر الأحمر</option>
+                            <option value="الأقصر">الأقصر</option>
+                            <option value="أسوان">أسوان</option>
+                            <option value="قنا">قنا</option>
+                            <option value="سوهاج">سوهاج</option>
+                            <option value="أسيوط">أسيوط</option>
+                            <option value="المنيا">المنيا</option>
+                            <option value="بني سويف">بني سويف</option>
+                            <option value="الفيوم">الفيوم</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Area / District <span class="required">*</span></label>
+                        <input type="text" id="area" placeholder="مثال: مدينة نصر" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Street / Nearby Place <span class="required">*</span></label>
+                    <input type="text" id="street" placeholder="مثال: شارع العروبة - بجوار مسجد النور" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Building Number</label>
+                        <input type="text" id="building" placeholder="مثال: 15">
+                    </div>
+                    <div class="form-group">
+                        <label>Floor / Apartment</label>
+                        <input type="text" id="apartment" placeholder="مثال: 3">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Landmark (Optional)</label>
+                    <input type="text" id="landmark" placeholder="مثال: بجوار صيدلية العزبي">
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="payment" value="cod" checked onchange="toggleCardFields()">
+                            <span><i class="fas fa-money-bill-wave"></i> Cash on Delivery</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="payment" value="card" onchange="toggleCardFields()">
+                            <span><i class="fas fa-credit-card"></i> Credit Card</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="cardFields" style="display: none;">
+                    <div class="form-group">
+                        <label>Card Number (Visa/Mastercard) <span class="required">*</span></label>
+                        <input type="text" id="cardNumber" placeholder="4111 1111 1111 1111 or 5111 1111 1111 1111" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date <span class="required">*</span></label>
+                            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV <span class="required">*</span></label>
+                            <input type="text" id="cardCvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cardholder Name <span class="required">*</span></label>
+                        <input type="text" id="cardName" placeholder="JOHN SMITH">
+                    </div>
+                </div>
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotalPrice">0 LE</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span class="free-shipping">Free</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="checkoutTotal">0 LE</span>
+                    </div>
+                </div>
+                <button type="submit" class="checkout-submit">
+                    <span>Confirm Order</span>
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content success-content">
+            <div class="success-animation">
+                <div class="checkmark">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            <h2>Order Placed Successfully! 🎉</h2>
+            <p>سنتواصل معك قريباً لConfirm Order</p>
+            <button class="success-btn" id="successBtn">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h2><i class="fas fa-shopping-bag"></i> Shopping Cart</h2>
+            <button class="cart-close" id="cartClose" aria-label="Close cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <h3><span id="total-price">0</span> <small>LE</small></h3>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">
+                <span>Complete Purchase</span>
+                <span class="btn-shine"></span>
+            </button>
+        </div>
+    </aside>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Wishlist Drawer -->
+    <aside class="wishlist-drawer" id="wishlistDrawer">
+        <div class="wishlist-drawer-header">
+            <h2><i class="fas fa-heart"></i> Wishlist</h2>
+            <button class="wishlist-close" id="wishlistClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="wishlist-items" class="wishlist-items"></div>
+        <div class="wishlist-empty" id="wishlistEmpty">
+            <i class="far fa-heart"></i>
+            <p>Wishlist فارغة</p>
+        </div>
+    </aside>
+    <div class="wishlist-overlay" id="wishlistOverlay"></div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
